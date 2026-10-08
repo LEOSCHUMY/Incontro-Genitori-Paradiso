@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <meta name="description"
+        content="Aggiungi il calendario degli eventi">
+
+  <title>Calendario eventi</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      padding: 20px;
+
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
+
+      background: #f4f6f8;
+      color: #17202a;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 520px;
+
+      background: white;
+      border-radius: 22px;
+
+      padding: 32px 24px;
+
+      box-shadow:
+        0 12px 40px rgba(0, 0, 0, 0.08);
+
+      text-align: center;
+    }
+
+    .icon {
+      font-size: 52px;
+      margin-bottom: 8px;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: 28px;
+    }
+
+    .intro {
+      color: #667085;
+      line-height: 1.55;
+      margin: 0 auto 26px;
+      max-width: 430px;
+    }
+
+    .button {
+      display: block;
+      width: 100%;
+
+      padding: 15px 18px;
+      margin: 12px 0;
+
+      border-radius: 12px;
+
+      text-decoration: none;
+
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .apple {
+      background: #111827;
+      color: white;
+    }
+
+    .google {
+      background: #4285f4;
+      color: white;
+    }
+
+    .ics {
+      background: #eef2f7;
+      color: #17202a;
+    }
+
+    .info {
+      margin-top: 22px;
+
+      padding: 17px;
+
+      background: #f6f7f9;
+
+      border-radius: 14px;
+
+      text-align: left;
+
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    .info strong {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .small {
+      margin-top: 20px;
+
+      font-size: 12px;
+      color: #98a2b3;
+
+      line-height: 1.5;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="card">
+
+    <div class="icon">📅</div>
+
+    <h1>Segui gli eventi</h1>
+
+    <p class="intro">
+      Aggiungi il calendario al tuo dispositivo
+      per ricevere automaticamente nuovi eventi
+      e modifiche.
+    </p>
+
+
+    <!--
+      =====================================================
+      IPHONE / IPAD
+      =====================================================
+    -->
+
+    <a
+      id="iosButton"
+      class="button apple"
+      href="#">
+
+      🍎 Aggiungi al Calendario
+
+    </a>
+
+
+    <!--
+      =====================================================
+      GOOGLE CALENDAR
+      =====================================================
+    -->
+
+    <a
+      id="googleButton"
+      class="button google"
+      href="#"
+      target="_blank"
+      rel="noopener">
+
+      🤖 Aggiungi a Google Calendar
+
+    </a>
+
+
+    <!--
+      =====================================================
+      ALTRE APP
+      =====================================================
+    -->
+
+    <a
+      id="icsButton"
+      class="button ics"
+      href="#"
+      target="_blank"
+      rel="noopener">
+
+      📄 Altre app calendario
+
+    </a>
+
+
+    <div
+      id="instructions"
+      class="info">
+
+    </div>
+
+
+    <div class="small">
+
+      Una volta sottoscritto il calendario,
+      gli aggiornamenti vengono ricevuti secondo
+      la frequenza di sincronizzazione dell'app
+      utilizzata.
+
+    </div>
+
+  </main>
+
+
+<script>
+
+  /*
+   * =====================================================
+   * CONFIGURAZIONE
+   * =====================================================
+   *
+   * Questo è il tuo calendario Google.
+   *
+   * NON MODIFICARE questo indirizzo.
+   */
+
+  const ICS_URL =
+    "https://calendar.google.com/calendar/ical/" +
+    "15d081e0c267fadb3c325c05f3971cd551653d21289f9e2d268436b63d33cc32%40group.calendar.google.com" +
+    "/public/basic.ics";
+
+
+  /*
+   * URL webcal per Apple Calendar
+   */
+
+  const WEBCAL_URL =
+    "webcal://calendar.google.com/calendar/ical/" +
+    "15d081e0c267fadb3c325c05f3971cd551653d21289f9e2d268436b63d33cc32%40group.calendar.google.com" +
+    "/public/basic.ics";
+
+
+  /*
+   * URL Google Calendar "aggiungi tramite URL"
+   */
+
+  const GOOGLE_URL =
+    "https://calendar.google.com/calendar/r/settings/addbyurl?url=" +
+    encodeURIComponent(ICS_URL);
+
+
+  /*
+   * Impostiamo i link
+   */
+
+  document.getElementById("iosButton").href =
+    WEBCAL_URL;
+
+  document.getElementById("googleButton").href =
+    GOOGLE_URL;
+
+  document.getElementById("icsButton").href =
+    ICS_URL;
+
+
+  /*
+   * Rileviamo il dispositivo
+   */
+
+  const userAgent =
+    navigator.userAgent.toLowerCase();
+
+  const isIOS =
+    /iphone|ipad|ipod/.test(userAgent);
+
+  const isAndroid =
+    /android/.test(userAgent);
+
+
+  const iosButton =
+    document.getElementById("iosButton");
+
+  const googleButton =
+    document.getElementById("googleButton");
+
+  const instructions =
+    document.getElementById("instructions");
+
+
+  /*
+   * IPHONE / IPAD
+   */
+
+  if (isIOS) {
+
+    googleButton.style.display = "none";
+
+    instructions.innerHTML =
+      "<strong>🍎 iPhone / iPad</strong>" +
+
+      "Tocca «Aggiungi al Calendario». " +
+
+      "Il dispositivo dovrebbe aprire " +
+      "l'app Calendario e chiederti di " +
+      "confermare la sottoscrizione.";
+
+  }
+
+
+  /*
+   * ANDROID
+   */
+
+  else if (isAndroid) {
+
+    iosButton.style.display = "none";
+
+    instructions.innerHTML =
+      "<strong>🤖 Android</strong>" +
+
+      "Tocca «Aggiungi a Google Calendar». " +
+
+      "Se Google Calendar non apre direttamente " +
+      "la procedura, usa Google Calendar dal browser " +
+      "e scegli «Aggiungi calendario → Da URL»." +
+
+      "<br><br>" +
+
+      "L'indirizzo del calendario è già pronto.";
+
+  }
+
+
+  /*
+   * COMPUTER / ALTRI DISPOSITIVI
+   */
+
+  else {
+
+    instructions.innerHTML =
+      "<strong>💻 Computer / altre app</strong>" +
+
+      "Puoi usare Google Calendar oppure " +
+      "il pulsante «Altre app calendario» " +
+      "se il tuo programma supporta calendari ICS.";
+
+  }
+
+</script>
+
+</body>
+</html>
