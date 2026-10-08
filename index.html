@@ -172,6 +172,16 @@
       margin-bottom: 4px;
     }
 
+    .tab-note-warning {
+      font-size: 0.78rem;
+      color: #78350f;
+      background-color: #fffbe2;
+      border-left: 3px solid #f59e0b;
+      padding: 6px 8px;
+      border-radius: 4px;
+      margin: 6px 0 10px 0;
+    }
+
     /* Pulsanti Calendario */
     .btn-container {
       display: flex;
@@ -320,28 +330,33 @@
 
       <!-- Tab Android -->
       <div id="tab-android" class="tab-content active">
-        <div><span class="tag-static">Importazione Rapida (Consigliato da Mobile)</span></div>
-        <p>Premi <strong>"Scarica file .ICS"</strong> in basso, apri il file e conferma per aggiungere subito tutti gli incontri nel tuo calendario.</p>
-        <div style="margin-top: 8px;"><span class="tag-sync">Sincronizzazione Live</span></div>
-        <p>Apri questo link da <strong>PC/Computer</strong> e premi <em>Google Calendar</em>: gli incontri si aggiorneranno da soli sul tuo smartphone.</p>
+        <div><span class="tag-static">⚡ Importazione Rapida (Consigliato da Mobile)</span></div>
+        <p>Premi <strong>"Scarica file .ICS"</strong> in basso, apri il file scaricato e conferma per aggiungere gli incontri nel tuo telefono.</p>
+        
+        <div class="tab-note-warning">
+          ⚠️ <strong>Nota:</strong> Questo metodo scarica gli eventi attuali ma <u>NON si aggiorna automaticamente</u> in tempo reale se in futuro vengono modificati orari o date.
+        </div>
+
+        <div><span class="tag-sync">🔄 Per la Sincronizzazione Live</span></div>
+        <p>Se desideri la sincronizzazione automatica in tempo reale su Android, apri questa pagina da un <strong>PC/Computer</strong> e clicca su <em>Google Calendar</em>.</p>
       </div>
 
       <!-- Tab Apple -->
       <div id="tab-apple" class="tab-content">
-        <span class="tag-sync">Sincronizzazione Live</span>
-        <p>Clicca sul pulsante <strong>Apple Calendar</strong> e seleziona <em>"Sottoscrivi"</em>. Gli incontri si aggiungeranno e aggiorneranno automaticamente sul tuo dispositivo.</p>
+        <span class="tag-sync">🔄 Sincronizzazione Live</span>
+        <p>Clicca sul pulsante <strong>Apple Calendar</strong> e seleziona <em>"Sottoscrivi"</em>. Gli incontri si aggiungeranno e si aggiorneranno automaticamente sul tuo dispositivo.</p>
       </div>
 
       <!-- Tab PC -->
       <div id="tab-pc" class="tab-content">
-        <span class="tag-sync">Sincronizzazione Live</span>
-        <p>Clicca su <strong>Google Calendar</strong> o <strong>Outlook</strong> per aggiungere direttamente il calendario al tuo account cloud. Verrà sincronizzato anche sull'app del tuo smartphone!</p>
+        <span class="tag-sync">🔄 Sincronizzazione Live</span>
+        <p>Clicca su <strong>Google Calendar</strong> o <strong>Outlook</strong> per aggiungere direttamente il calendario al tuo account cloud. Verrà sincronizzato automaticamente anche sull'app del tuo smartphone!</p>
       </div>
     </div>
 
     <!-- Pulsanti Calendario -->
     <div class="btn-container">
-      <!-- Direct ICS Download (Consigliato per Android) -->
+      <!-- Direct ICS Download -->
       <a id="btn-ics" class="btn" href="https://calendar.google.com/calendar/ical/15d081e0c267fadb3c325c05f3971cd551653d21289f9e2d268436b63d33cc32%40group.calendar.google.com/public/basic.ics" download>
         <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
         Scarica file .ICS
