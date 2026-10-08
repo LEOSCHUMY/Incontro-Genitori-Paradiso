@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Iscriviti al Calendario Eventi</title>
+  <title>Incontri Genitori Paradiso - Calendario Eventi</title>
   <style>
     :root {
       --bg-color: #f8fafc;
@@ -12,6 +12,7 @@
       --text-sub: #64748b;
       --border-color: #e2e8f0;
       --accent-color: #2563eb;
+      --pin-color: #ef4444;
     }
 
     * {
@@ -60,16 +61,66 @@
     }
 
     h1 {
-      font-size: 1.5rem;
+      font-size: 1.6rem;
       font-weight: 700;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.75rem;
+      color: var(--text-main);
     }
 
     p.description {
       color: var(--text-sub);
       font-size: 0.95rem;
       line-height: 1.5;
-      margin-bottom: 1.75rem;
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+
+    /* Box Location */
+    .location-box {
+      background-color: #f1f5f9;
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      text-align: left;
+    }
+
+    .location-icon-wrapper {
+      background-color: #ffffff;
+      color: var(--pin-color);
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+    }
+
+    .location-icon-wrapper svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    .location-details {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .location-title {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--text-main);
+    }
+
+    .location-subtitle {
+      font-size: 0.85rem;
+      color: var(--text-sub);
+      margin-top: 2px;
     }
 
     .btn-container {
@@ -133,8 +184,22 @@
       </svg>
     </div>
 
-    <h1>Calendario Eventi</h1>
-    <p class="description">Iscriviti per sincronizzare automaticamente tutti gli eventi aggiornati direttamente sul tuo dispositivo.</p>
+    <h1>Incontri Genitori Paradiso</h1>
+    <p class="description">Ascoltare, approfondire e confrontarsi sui temi della fede, della vita, delle relazioni e dell'educazione.</p>
+
+    <!-- Sezione Luogo -->
+    <div class="location-box">
+      <div class="location-icon-wrapper">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
+      </div>
+      <div class="location-details">
+        <span class="location-title">Parrocchia Paradiso</span>
+        <span class="location-subtitle">Sala Parrocchiale (ritrovo nel cortile)</span>
+      </div>
+    </div>
 
     <div class="btn-container">
       <!-- Apple Calendar (iOS / macOS) -->
@@ -158,15 +223,14 @@
       <!-- Direct ICS Download -->
       <a class="btn" href="https://calendar.google.com/calendar/ical/15d081e0c267fadb3c325c05f3971cd551653d21289f9e2d268436b63d33cc32%40group.calendar.google.com/public/basic.ics" download>
         <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
-        Scarica file .ICS (Generico)
+        Scarica file .ICS
       </a>
     </div>
 
-    <p class="footer-note">Gli eventi aggiunti tramite sottoscrizione si aggiorneranno automaticamente.</p>
+    <p class="footer-note">Aggiungi il calendario per sincronizzare automaticamente tutti gli incontri sul tuo dispositivo.</p>
   </div>
 
   <script>
-    // Rileva il sistema operativo e imposta il pulsante primario consigliato
     document.addEventListener("DOMContentLoaded", function() {
       const userAgent = navigator.userAgent || navigator.vendor || window.opera;
       const isApple = /iPad|iPhone|iPod|Macintosh/i.test(userAgent) && !window.MSStream;
